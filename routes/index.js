@@ -20,12 +20,18 @@ const getConfig = {
 //     }
 // };
 
+
 router.get('/movies', (req, res) => {
     fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}`)
         .then(r => r.json())
         .then(data => {
-            res.json(data)
+            let arr = [];
+            for (const el of data.results) {
+                arr.push(el)
+            }
+            res.json({ movies: arr })
         })
 })
+
 
 module.exports = router;
