@@ -11,6 +11,7 @@ const getConfig = {
     }
 };
 
+
 // const postConfig = {
 //     method: 'POST',
 //     headers: {
@@ -20,7 +21,7 @@ const getConfig = {
 // };
 
 router.get('/movies', (req, res) => {
-    fetch('https://api.themoviedb.org/3/discover/movie', getConfig)
+    fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}`)
         .then(r => r.json())
         .then(data => {
             res.json(data)
